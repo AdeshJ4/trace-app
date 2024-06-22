@@ -1,25 +1,10 @@
-import Link from "next/link";
+import ProductCard from "./components/ProductCard";
 
 export default function Home() {
   return (
     <main>
-      <ul>
-        <li>
-          <Link href="/home">Home</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link href="/users">Users</Link>
-        </li>
-        <li>
-          <Link href="/users/new">New User</Link>
-        </li>
-      </ul>
+      <h1>Hello World</h1>
+      <ProductCard />
     </main>
   );
 }
