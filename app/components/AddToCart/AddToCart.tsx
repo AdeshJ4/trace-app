@@ -3,9 +3,7 @@
 import React from "react";
 
 const AddToCart = () => {
-  return (
-    <button onClick={() => console.log("Button Pressed")}>Add To Cart</button>
-  );
+  return <button className="btn btn-primary">Save</button>;
 };
 
 export default AddToCart;
