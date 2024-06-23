@@ -5,8 +5,13 @@ interface User {
   name: string;
 }
 
+// only accessible in fetch function and not in other third party libraries like axios.
+// cache: "no-store" -> Don't store data in cache, fresh data
+// next: {revalidate: 10} -> after 10 sec get fresh data
 const UsersPage = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch("https://jsonplaceholder.typicode.com/users", {
+    next: { revalidate: 10 },
+  });
   const users: User[] = await response.json();
 
   return (
