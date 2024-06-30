@@ -24,29 +24,28 @@ const UserTable = async ({ sortOrder }: Props) => {
     sortOrder === "email" ? (user) => user.email : (user) => user.name
   );
 
-  if (sortOrder)
-    return (
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>
-              <Link href="users?sortOrder=name">Name</Link>
-            </th>
-            <th>
-              <Link href="users?sortOrder=email">Email</Link>
-            </th>
+  return (
+    <table className="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            <Link href="users?sortOrder=name">Name</Link>
+          </th>
+          <th>
+            <Link href="users?sortOrder=email">Email</Link>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {ascSorted.map((user) => (
+          <tr key={user.id}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
           </tr>
-        </thead>
-        <tbody>
-          {ascSorted.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
+        ))}
+      </tbody>
+    </table>
+  );
 };
 
 export default UserTable;
