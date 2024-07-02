@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 interface Props {
     params: { id: number };
@@ -19,7 +20,8 @@ export function GET(request: NextRequest, { params: { id } }: Props) {
 // patch -> replacing some properties
 export async function PUT(request: NextRequest, { params: { id } }: { params: { id: number } }) {
     const body = await request.json();
-    if (!body.name) return NextResponse.json({ error: "Name is required" }, { status: 400 });
+    const validation = schema.safeParse(body);
+    if (!validation.success) return NextResponse.json({ error: validation.error.errors }, { status: 400 });
     return NextResponse.json({ id: 101, fname: body.name }, { status: 200 });
 }
 

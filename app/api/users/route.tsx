@@ -20,5 +20,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     // validate request
     if (!body.name) return NextResponse.json({ error: 'Name is required' }, { status: 400 });
+    if (!body.age) return NextResponse.json({ error: 'Age is required' }, { status: 400 });
+    if (!body.email) return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     return NextResponse.json({ ...body }, { status: 201 });
 }
