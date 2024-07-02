@@ -22,8 +22,8 @@ export async function PUT(request: NextRequest, { params: { id } }: { params: { 
     const body = await request.json();
     const validation = schema.safeParse(body);
     if (!validation.success) return NextResponse.json({ error: validation.error.errors }, { status: 400 });
-    return NextResponse.json({ id: 101, fname: body.name }, { status: 200 });
-}
+        return NextResponse.json({ id: 101, fname: body.name }, { status: 200 });
+    }
 
 
 
