@@ -1,17 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-
+import prisma from "@/prisma/client";
 
 /* 
 although we don't use request parameter at this point, if you remove it then next js will cache the response and next time when
 you make the req you will get cache result. so write request.
 */
 
+// Get All Users
 // visit : http://localhost:3000/api/users
-export function GET(request: NextRequest) {
-    return NextResponse.json([
-        { id: 101, name: 'Adesh' },
-        { id: 102, name: 'Akshay' },
-    ])
+export async function GET(request: NextRequest) {
+    const users = await prisma.user.findMany();
+    return NextResponse.json(users);
 }
 
 
